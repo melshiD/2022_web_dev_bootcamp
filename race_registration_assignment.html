@@ -1,0 +1,45 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    <h1>Race Registration</h1>
+    <form action="">
+    <label for="first-name">First Name</label>
+    <input type="text" id="first-name" name="fn" placeholder="first name here" required>
+    <label for="last-name">Last Name</label>
+    <input type="text" id="last-name" name="ln" placeholder="last name here" required>
+    <p>
+        Select a Race
+    </p>
+    <input type="radio" name="race-choice" id="fun-run" selected >
+    <label for="fun-run">Fun Run</label>
+    <div></div>
+    <input type="radio" name="race-choice" id="half-marathon" selected >
+    <label for="half-marathon">Half Marathon</label>
+    <div></div>
+    <input type="radio" name="race-choice" id="full-marathon" selected >
+    <label for="full-marathon">Full Marathon</label>
+    <div></div>
+
+    
+    <label for="email">Email</label>
+    <input type="email" name="email" id="email" required placeholder="email">
+    <input type="password" name="password" id="password" required placeholder="password">
+    <div></div>
+    <label for="age-group">Select An Age Group</label>
+    <select id="age-group" name="ag">
+        <option id="under-18" value="u18">Under 18</option>
+        <option id="19-89" value="19-89">19 to 89</option>
+        <option id="even-older" value="uo">Even Older</option>
+        <option id="fossil" value="f">Fossil Old</option>
+    </select>
+    <div></div>
+    <button>Register</button>
+</form>
+</body>
+</html>

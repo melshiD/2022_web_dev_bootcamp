@@ -8,24 +8,79 @@
     <link rel="stylesheet" href="form_demo.css">
 </head>
 <body>
+    
     <h1>Forms Demo</h1>
     <form action="/tacos">
+        <input type="tel" name="email" id="email" placeholder="enter email here pleasef">
+        <div class="form-class">
         <div>
-            <label for="username">into this box</label>
-            <input type="text" id="username" placeholder="username">
-        </div>
-        <div>
+            <label for="username">into this box</label> 
+            <input type="text" id="username" name="metaNameHere!" placeholder="username">
+
             <label for="password">and place</label>
-            <input type="password" id="password" placeholder="password here">
+            <input type="password" id="password" name="password" placeholder="password here">
         </div>
         <div>
-            <label for="sex">Sex</label>
+            <label for="sex">Sex ?</label>
             <input type="checkbox" id="sex">
-        </div>
-        <div>
-            <label for="number">Enter a number, yeh?</label>
+
+            <label for="number">Just enter a number, yeh?</label>
             <input type="number" id="number" estep="0.01">
         </div>
+        <button type="button">Submit</button>
+        <input type="submit" value="my name is Submit">
+    </div>
+    </form>
+
+    <h2>I'm outside the form</h2>
+
+    <form action="https://www.google.com/search">
+        <input type="text" name="q" placeholder="Search Google Here">
+        <button>Google</button>
+    </form>
+    <form action="https://www.youtube.com/results">
+        <input type="text" name="search_query">
+        <button>You Tube</button>
+    </form>
+    <form action="https://en.wikipedia.org">
+        <input type="text" name="wiki" placeholder="Wikipedia">
+        <button>Wikipedia</button>
+    </form>
+    <h2>Agreement to the agreement</h2>
+    <form action="/tacos">
+        <input type="checkbox" id="agree" name="i-agree" checked="yes" >
+        <label for="agree" >I agree to everything in the agree</label>
+        <div>
+            <label for="pill">pill</label>
+            <input type="radio" name="actionName" id="pill" value="pill">
+            <label for="radio">radio</label>
+            <input type="radio" name="actionName" id="radio" value="radio">
+            <label for="ink">ink</label>
+            <input type="radio" name="actionName" id="ink" value="ink">
+        </div>
+        <button>To the Tacos!</button>
+    </form>
+    <h2>New Form Here</h2>
+    <form action="">
+        <label for="cn">Choose a Kritter Name</label>
+        <select name="cn" required>
+            <option value="">--Kritters--</option>
+            <option id="boozy" value="bo">boozy</option>
+            <option id="whompo" value="wh">whompo</option>
+            <option id="fphil" value="fp">fphil</option>
+        </select>
+        <div></div>
+        <label for="range-slider">Slider Here</label>
+        <input type="range" id="range-slider" name="rs" min="1" max="20" value="15" step="0.5">
+        <button type="submit" >Submit</button>
+        <div></div>
+        <textarea id="story" 
+                  name="story" 
+                  rows="10"
+                  cols="34" 
+                  required
+                  placeholder="Tell us all about it here"
+                  minlength="2"></textarea>
     </form>
 </body>
 

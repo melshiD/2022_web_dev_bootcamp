@@ -1,0 +1,15 @@
+h1{
+    background-color: powderblue;
+    border: 2px solid plum;
+    color: sienna;
+    /* display: block; */
+    padding-right: 100px;
+}
+span{
+    width: 200px;
+    background-color: sienna;
+    border: 4px dotted firebrick;
+    margin: 0px;
+    padding: 100px;
+    display: inline-block;
+}

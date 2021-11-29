@@ -1,4 +1,7 @@
-h1, h2{
+body h2{
+    color: cornflowerblue !important;
+}
+h1, body h2{
     color: white;
     text-shadow: 2px 2px 1px salmon;
     background-color: orangered;
@@ -29,7 +32,4 @@ footer > a{
 }
 h2::selection{
     text-shadow: 5px 4px 5px pink, -12px -12px 2px pink;
-}
-button{
-    background-color: magenta !important;
 }

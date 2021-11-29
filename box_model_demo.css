@@ -1,0 +1,40 @@
+body{
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+div{
+    width:200px;
+    height: 400px;
+    background-color: crimson;
+    margin: 10px;
+}
+div:first-of-type{
+    border: black solid 10px;
+    box-sizing: border-box;
+    padding: 5px;
+}
+input{
+    height: 50px;
+    text-align: center;
+    border:  20px solid pink;
+    border-radius: 10px;
+    color: #45FF43;
+    border-left-color: salmon;
+
+}
+input:focus,
+input:active,
+{
+    border-style: none;
+    outline-width: 0;
+}
+div:nth-of-type(2n){
+    box-sizing: border-box;
+    padding: 10px;
+    border: rgb(63, 25, 151) 5px solid;
+    border-left-color:rgb(137, 111, 197);
+    border-right-color:rgb(122, 78, 226);
+    border-bottom-color:rgb(55, 51, 66);
+    border-bottom-left-radius: 20%;
+}

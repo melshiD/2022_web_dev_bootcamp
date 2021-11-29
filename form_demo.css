@@ -14,3 +14,11 @@ input[type=number] {
     border: orange 10px double;
     border-radius: 10px;
 }
+body{
+    color: rgb(173, 45, 219);
+    background-color: rgb(205, 3, 63);
+    text-shadow: 15px 12px 3px #433443;
+    border: solid olivedrab 10px;
+    padding: 10px;
+    border-radius: 23px;
+}

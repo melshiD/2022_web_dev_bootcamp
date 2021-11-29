@@ -1,0 +1,24 @@
+h1{
+    text-align: center;
+    font-weight: 200;
+    letter-spacing: 11px;
+    text-decoration: underline wavy #444 5px;
+    font-size: 55px;
+    font-family:
+}
+p{
+    text-align: center;
+    font-weight: 200;
+    text-decoration: none;
+    line-height: 2.5;
+    font-family: monospace, Tahoma, Geneva, Verdana, sans-serif, Arial, Helvetica;
+    font-size: 0.7em;
+
+}
+a{
+    text-decoration: none;
+}
+a:hover{
+    text-decoration: underline wavy;
+    overflow: visible;
+}

@@ -1,0 +1,35 @@
+h1, h2{
+    color: white;
+    text-shadow: 2px 2px 1px salmon;
+    background-color: orangered;
+    border: 2px solid black;
+    border-radius: 10px;
+}
+
+span{
+    font-family: monospace;
+}
+#signup{
+    color: palevioletred;
+    background-color: bisque;
+    text-transform: uppercase;
+}
+footer > a{
+    color: teal;
+    text-decoration: none;
+}
+[type="password"]{
+    color:cadetblue;
+}
+.post:nth-of-type(3n){
+    background-color: cadetblue;
+    border-radius: 20px;
+    overflow: hidden;
+    padding: 20px;
+}
+h2::selection{
+    text-shadow: 5px 4px 5px pink, -12px -12px 2px pink;
+}
+button{
+    background-color: magenta !important;
+}

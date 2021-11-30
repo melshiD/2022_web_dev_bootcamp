@@ -1,0 +1,25 @@
+div{
+    width: 1200px;
+    height: 800px;
+}
+
+section{
+    width: 50%;
+    height: 55%;
+    background-color:papayawhip;
+    border: 5px pink solid;
+    display: none;
+
+}
+h1{
+    font-size: 40px;
+    line-height: 200%;
+    border: black solid 1px;
+}
+article{
+    font-size: 40px;
+}
+article p{
+    font-size: 0.7em;
+    font-family: monospace;
+}

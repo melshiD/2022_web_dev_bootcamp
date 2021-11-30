@@ -1,0 +1,15 @@
+.container{
+    width: 100px;
+    height: 100px;
+    background-color: rgb(228, 218, 218);
+    transition:  500ms;
+}
+.container:hover{
+
+    background-color: rgb(21, 109, 160);
+    /* border-radius: 50%; */
+    transform-origin: 10px 10px;
+    transform: rotate(30deg);
+
+}
+

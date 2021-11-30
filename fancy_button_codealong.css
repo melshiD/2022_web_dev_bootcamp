@@ -1,0 +1,30 @@
+body{
+    font-family: monospace, sans-serif;
+    font-size: 40px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    height: 100vh;
+    background-color: #151b29;
+}
+button{
+    background: none;
+    color: #ffa260;
+    border: 2px solid;
+    padding: 1em 2em;
+    font-size: 1em;
+    border-radius: 0.2em;
+}
+button:hover{
+    border-color: #f1ff5c;
+    text-shadow: 0.2em 0 0.7em orangered;
+    box-shadow: inset 0.5em 0 0.5em -0.4em orangered,
+                inset 0 -0.5em .5em -.4em orangered,
+                inset 0 0.5em .5em -.4em orangered,
+                inset -.5em 0 .5em -.4em orangered;
+    color: #943822;
+    transform: scale(0.94);
+    transition: transform 2s , color 3s ease-in, 
+                text-shadow 1s cubic-bezier(0.175, 0.885, 0.32, 1.275);
+    cursor: pointer;
+}

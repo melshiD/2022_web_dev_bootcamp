@@ -1,0 +1,23 @@
+body{
+    font-family: monospace, roboto;
+    font-size: 20px;
+    margin: auto;
+    width: 700px;
+}
+h2, h3{
+    font-family: spectral;
+    font-style: italic;
+}
+h2{
+    margin-bottom: 4px;
+}
+h3{
+    font-size: 0.87em;
+    margin: 0 0 19px 9px;
+    display: inline-block;
+
+}
+p{
+    font-weight: 200;
+    font-size: 0.88rem;
+}

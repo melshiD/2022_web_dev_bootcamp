@@ -1,0 +1,23 @@
+nav{
+    width: 28%;
+    font-size: 1.2rem;
+    font-family: 'Spectral SC';
+    font-weight: 500;
+    color: #444444;
+    border-bottom: 2px solid #444444;
+    margin: calc(14%/6);
+    margin-bottom: 0;
+    padding: 10px 0;
+}
+img{
+    width: 28%;
+    /* height: auto; */
+    border-radius: 0.5em;
+    margin: calc(14%/6);
+    transition: transform 2s ease-out;
+}
+
+img:hover{
+    transform: scale(1.06);
+    transition: transform 2s ease-out;
+}

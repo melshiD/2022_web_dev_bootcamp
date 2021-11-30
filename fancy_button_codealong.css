@@ -30,4 +30,7 @@ button:hover{
 }
 /*why does the text get fuzzy during the transition and then clear/sharpen 
 up when the animation comes to a close (maybe even during the very last
-moments, it's hard to tell)?*/
+moments, it's hard to tell)?
+
+Maybe it has something to do with elements traversing color values of their adjacent
+element attributes*/

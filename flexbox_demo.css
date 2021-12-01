@@ -30,8 +30,28 @@ div:nth-of-type(4){
 }
 div:nth-of-type(5){
     flex-grow: 1;
+    flex-shrink: 0;
 }
 
-/* div:nth-of-type(3){
-    align-self: flex-end;
-} */
+
+main{
+    height: 300px;
+    width: 50%;
+    max-width: 500px;
+    background-color: orchid;
+    border: solid black 2px;
+    border-radius: 0.8em;
+    overflow: hidden;
+    display: flex;
+}
+main .sidebar{
+    background-color: palevioletred;
+    flex: 1;
+    border: orangered 2px solid;
+}
+main .main-content{
+    background-color: rgb(128, 35, 66);
+    flex:  2 0 100px;
+    border: violet 4px solid;
+    
+}

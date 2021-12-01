@@ -83,7 +83,7 @@ body{
     margin-top: 0.3em;
     margin-bottom: 0.2em;
     border-radius: 0.2em;
-    max-width: 100%;
+    max-width: 90%;
 }
 .pricing-header{
     font-family: 'spectral SC';
@@ -144,5 +144,13 @@ body{
     }
     .pricing-img{
         width: 14em;
+    }
+    .pricing-plan{
+        border-bottom: none;
+        border-right: 1px solid #e1f1ff;
+        padding: 25px 50px;
+    }
+    .pricing-plan:last-child{
+        border-right: none;
     }
 }

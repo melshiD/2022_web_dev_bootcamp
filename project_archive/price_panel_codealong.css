@@ -151,6 +151,7 @@ body{
         padding: 25px 50px;
     }
     .pricing-plan:last-child{
+        border-bottom: none;
         border-right: none;
     }
 }

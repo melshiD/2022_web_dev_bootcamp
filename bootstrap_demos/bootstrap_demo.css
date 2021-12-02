@@ -1,0 +1,7 @@
+.underlined{
+    /* width: fit-content; */
+    border-bottom: 1px solid rgb(168, 203, 226);
+    padding-bottom: 0.2em;
+    text-align: center;
+
+}

@@ -1,0 +1,64 @@
+body{
+    background-color: #f5d9df;
+    font-family: "nunito", sans-serif;
+}
+.blurb h2{
+    color: #ea1c2c;
+    font-weight: 100;
+    font-size: 2.5rem;
+}
+.blurb p{
+    color: #b64c71;
+    font-weight: 100;
+    font-size: 1.125rem;
+    line-height: 2;
+}
+#main_navbar{
+    font-size: 1.5rem;
+    font-weight: 100;
+}
+#main_navbar .nav-link{
+    color: white;
+}
+#main_navbar .nav-link:hover{
+    color: #ea1c2c;
+}
+#main_navbar .navbar-brand{
+    color: #ea1c2c; 
+    /* font-size: 1.50rem; */
+    /* default font-size in bootstrap.css for navbar-brand is 1.25rem */
+    font-weight: 100;
+ }
+ section h1{
+     text-transform: uppercase;
+ }
+ .content{
+     margin-top: 100px;
+ }
+ #heading_group span{
+     color: #ea1c2c;
+ }
+ #heading_group h2{
+     font-weight: 100;
+     font-size: 4rem;
+ }
+ .navbar.scrolled{
+     background: rgb(222, 192, 222);
+     transition: background-color 450ms;
+ }
+ @media(max-width: 1220px){
+     body{
+         background-color: #f3c2cc;
+     }
+     #heading_group h2{
+         font-size: 3rem;
+     }
+ }
+ @media(max-width: 1050px){
+     body{
+         background-color: #8b0ba8;
+     }
+     #heading_group h2{
+         font-size: 2.4rem;
+     }
+ }

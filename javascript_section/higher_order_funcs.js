@@ -53,3 +53,12 @@ const allEvens = numbers => numbers.every(e => e%2 === 0);
 
 let arrayNew = [1,2,3,4,5,4,5,6,7,6,4,3,23,456,56655, 44];
 const maxNumber = (array) => array.reduce((max, curr) => max>curr?max:curr);
+
+const dieFactory = numSides =>{
+    function newDie(){
+        return Math.floor(Math.random()*numSides)+1;
+    }
+    return newDie;
+}
+let d8 = dieFactory(8);
+let d20 = dieFactory(20);

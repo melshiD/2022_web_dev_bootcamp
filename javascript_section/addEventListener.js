@@ -5,3 +5,6 @@ listItems.forEach(e=>{
     e.addEventListener('dblclick', ()=>e.style.borderRadius = '15px');
 });     //all of the paragraphs receive a border upon click, 
         //and a radius upon doubleclick
+
+document.getElementById('hello').addEventListener('click', () => console.log('hello'));
+document.getElementById('goodbye').addEventListener('click', () => console.log('goodbye'));

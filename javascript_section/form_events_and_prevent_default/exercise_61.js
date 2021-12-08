@@ -8,6 +8,8 @@ form.addEventListener('submit', (e) =>{
     clearAfterSubmit();
 });
 
+form.addEventListener('input', (e)=>console.log(e)); //wild input listener
+
 const addItem = () =>{
     let productName = form.elements.product.value;
     let productQty = form.elements.qty.value;

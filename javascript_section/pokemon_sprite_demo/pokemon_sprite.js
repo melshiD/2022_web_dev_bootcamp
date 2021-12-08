@@ -7,6 +7,8 @@ const container = document.querySelector('#container');
 
 for(let i = 1; i < 150; i++){
     let newImg = document.createElement('img');
-    newImg.src = `https://github.com/PokeAPI/sprites/blob/master/sprites/pokemon/${i}.png`;
+    newImg.setAttribute('src', `https://github.com/PokeAPI/sprites/blob/master/sprites/pokemon/${i}.png`);
     container.appendChild(newImg);
 }
+
+// https://github.com/PokeAPI/sprites/tree/master/sprites/pokemon

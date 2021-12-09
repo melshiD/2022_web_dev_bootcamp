@@ -1,10 +1,6 @@
-img{
-    width: 200px;
+.winner{
+    color: green;
 }
-label, select{
-    display: inline;
-}
-.play-to, button{
-    border-radius: 0.4em;
-    
+.loser{
+    color: red;
 }

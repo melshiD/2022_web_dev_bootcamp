@@ -41,8 +41,8 @@ function updateScores(player, contender){
         gameOver = true;
         player.button.disabled = true;
         contender.button.disabled = true;
-        player.display.classList.remove();
-        contender.display.classList.remove();
+        player.display.classList.add('winner');
+        contender.display.classList.add('loser');
     }
     player.display.textContent = player.score;
 }
@@ -52,6 +52,7 @@ function resetGame(){
         p.score = 0;
         p.display.textContent = 0;
         p.button.disabled = false;
+        p.display.classList.remove('winner', 'loser');
         gameOver = false;
     }
 }

@@ -6,43 +6,64 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Ping Pong Scorekeeper Codealong</title>
     <link rel="stylesheet" href="my_own.css">
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bulma@0.9.3/css/bulma.min.css">
 </head>
 <body>
-    <div class="mainContainer">
-        <figure>
-            <img src="https://images.unsplash.com/photo-1534158914592-062992fbe900?ixlib=rb-1.2.1&ixid=eyJhcHBfaWQiOjEyMDd9&auto=format&fit=crop&w=3784&q=80" alt="Ping Pong Paddle">
-        </figure>
-        <div>
-            <header>
-                <h2>Ping Pong Score Keeper</h2>
-            </header>
-            <div class="cardContent">
-                <h1 class="scoreDisplay">
-                    <span class="p1score">0</span> to <span class="p2score">0</span>
-                </h1>
-                <p class="subtitle">Use the buttons below to keep score</p>
-                <label for="playTo">Playing To</label>
-                <div class="isRounded">
-                    <select name="playTo" id="play_to" class="play-to">
-                        <option value="3">3</option>
-                        <option value="4">4</option>
-                        <option value="5">5</option>
-                        <option value="6">6</option>
-                        <option value="7">7</option>
-                        <option value="8">8</option>
-                        <option value="9">9</option>
-                        <option value="10">10</option>
-                    </select>
+    <section class="section">
+        <div class="container">
+            <div class="columns">
+                <div class="column is-half is-offset-one-quarter">
+                    <div class="card">
+                        <header class="card-header">
+                            <p class="card-header-title">
+                                Ping Pong Score Keeper
+                            </p>
+                        </header>
+                        <div class="card-image">
+                            <figure class="img is-2by1">
+                                <img src="https://images.unsplash.com/photo-1534158914592-062992fbe900?ixlib=rb-1.2.1&ixid=eyJhcHBfaWQiOjEyMDd9&auto=format&fit=crop&w=3784&q=80"
+                                    alt="Ping Pong Paddle">
+                            </figure>
+                        </div>
+                        <div class="card-content">
+                            <div class="media">
+                                <div class="media-left">
+                                </div>
+                                <div class="media-content">
+                                    <p class="title is-4">Use Buttons to Change Score</p>
+                                </div>
+                            </div>
+
+                            <div class="cardContent">
+                                <h1 class="scoreDisplay is-size-2">
+                                    <span class="p1score">0</span> to <span class="p2score">0</span>
+                                </h1>
+                                <p class="subtitle">Use the buttons below to keep score</p>
+                                <label for="play_to" class="label is-large is-inline">Playing To</label>
+                                <div class="select is-Rounded">
+                                    <select name="playTo" id="play_to" class="play-to">
+                                        <option value="3">3</option>
+                                        <option value="4">4</option>
+                                        <option value="5">5</option>
+                                        <option value="6">6</option>
+                                        <option value="7">7</option>
+                                        <option value="8">8</option>
+                                        <option value="9">9</option>
+                                        <option value="10">10</option>
+                                    </select>
+                                </div>
+                                <footer class="card-footer">
+                                    <button id="button1" class="is-primary button card-footer-item is-large">+1 PlayerOne</button>
+                                    <button id="button2" class="is-info button card-footer-item is-large">+1 Player Two</button>
+                                    <button id="reset" class="is-danger button card-footer-item is-large">Reset Score</button>
+                                </footer>
+                            </div>
+                        </div>
+                    </div>
                 </div>
-                <footer class="card-footer">
-                    <button id="button1">+1 Player One</button>
-                    <button id="button2">+1 Player Two</button>
-                    <button id="reset">Reset Score</button>
-                </footer>
             </div>
         </div>
-    </div>
-    
+    </section>
     <script src="my_own.js"></script>
 </body>
 </html>

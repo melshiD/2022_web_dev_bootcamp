@@ -10,10 +10,13 @@ const player2 = {
     display: document.querySelector('.p2score')
 };
 
+const winByTwoBox = document.getElementById('win_by_two');
+let winByTwoCondition = false;
 const reset = document.getElementById('reset');
 const playToScore = document.getElementById('play_to');
 let winningScore = 3;
 let gameOver = false;
+
 
 player1.button.addEventListener('click', ()=>{
     console.log('in player1');
@@ -33,9 +36,15 @@ playToScore.addEventListener('change', function(){//winningScore prints as NaN w
 
 reset.addEventListener('click', ()=> resetGame() );
 
+winByTwoBox.addEventListener('change', ()=>{
+    winByTwoCondition = !winByTwoCondition;
+})
+
 function updateScores(player, contender){
+    winByTwoBox.disabled = true;
     player.score += 1;
     console.log(`player score is ${player.score}`);
+    checkWinByTwo(player.score, contender.score);
     if(player.score === winningScore){
         console.log('INSIDE CONDITIONAL');
         gameOver = true;
@@ -47,6 +56,12 @@ function updateScores(player, contender){
     player.display.textContent = player.score;
 }
 
+function checkWinByTwo(playerScore, contenderScore){
+    if(winByTwoCondition && playerScore >= winningScore){
+        winningScore = playerScore >= contenderScore + 2 ? winningScore : winningScore+1;
+    }
+}
+
 function resetGame(){
     for(p of [player1, player2]){
         p.score = 0;
@@ -55,4 +70,6 @@ function resetGame(){
         p.display.classList.remove('winner', 'loser');
         gameOver = false;
     }
+    winningScore = parseInt(playToScore.value);
+    winByTwoBox.disabled = false;
 }

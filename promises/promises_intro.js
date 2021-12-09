@@ -62,3 +62,8 @@ const newPromise = fakeRequestPromise('www.melshtastic.com/yearInReview')
                 });
 
 const printPromise = ()=> console.log(newPromise);
+
+
+new Promise((resolve, reject) => {
+    resolve();
+})

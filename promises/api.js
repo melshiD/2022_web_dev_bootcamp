@@ -5,3 +5,6 @@ console.log(thisJson.ticker.price);
 let newJson = JSON.stringify(thisJson);
 
 console.log(newJson);
+
+//how come the first console.log() doesn't have quotes?  
+//It seems like JS is parsing the JSON for me automatically at the onset

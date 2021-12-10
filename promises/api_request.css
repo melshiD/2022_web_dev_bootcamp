@@ -1,0 +1,40 @@
+body{
+    background-image: url('./../photos/melsh_5.jpg');
+    background-size:cover;
+    background-repeat: no-repeat;
+    background-position-y: top;
+    background-position-x: center;
+    background-attachment: fixed;
+}
+#click_for_jokes{
+    width:12em;
+    height: 3em;
+    border-radius: .4em;
+}
+.jokes{
+    display: flex;
+    flex-wrap: wrap;
+
+}
+.joke{
+    font-family: monospace;
+    font-size: 1.5em;
+    font-weight: 700;
+    width: 10em;
+    border: 4px solid red;
+    border-radius: .4em;
+    margin: 1em;
+    list-style-type: none;
+    padding: .4em;
+    animation: fadeIn 2s;
+    background-color: hsla(0, 0%, 100%, 0.8);
+
+}
+@keyframes fadeIn{
+    0%{
+        opacity: 0;
+    }
+    100%{
+        opacity: 1;
+    }
+}

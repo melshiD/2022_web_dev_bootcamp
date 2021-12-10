@@ -14,3 +14,7 @@ asyncFunc().then(data => {
     console.log('you threw an error' + err);
 })
 
+async function currentPrice(){
+    return await https://api.cryptonator.com/api/ticker/btc-usd
+
+}

@@ -6,10 +6,15 @@ const fs = require('fs');
 // console.log('I come after mkdir')
 
 let folderName = process.argv[2] || 'Project';
-folderName = folderName.toString();
-fs.mkdirSync(folderName);
+
 
 // fs.writeFileSync(`${folderName}.html, ${folderName}.css, ${folderName}.js`)
-fs.writeFileSync(`${folderName}/test.html`);
-fs.writeFileSync(`${folderName}/test.js`);
-fs.writeFileSync(`${folderName}/test.css`);
+try{
+    fs.mkdirSync(folderName);
+    fs.writeFileSync(`${folderName}/test.html`, '');
+    fs.writeFileSync(`${folderName}/test.js`, '');
+    fs.writeFileSync(`${folderName}/test.css`, '');
+} catch(e){
+    console.log('something has gone wrong');
+    console.log('error: ' + e);
+}

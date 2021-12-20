@@ -1,3 +1,3 @@
 const nameList = require('./nameGen');
 
-console.log(nameList);
+console.log(nameList.print())

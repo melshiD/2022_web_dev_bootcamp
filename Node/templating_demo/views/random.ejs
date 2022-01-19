@@ -1,0 +1,20 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Random.ejs</title>
+</head>
+<body>
+    <h1><%= rand %></h1>
+    <% if(rand%2 == 0){%>
+        <h2> You're into an even number, there</h2>
+    <%} else{ %>
+        <h2>That there, is an ODD number</h2>
+    <%} %>
+    <h3><%= rand%2===0?'EVEN':'ODD' %></h3>
+
+
+</body>
+</html>

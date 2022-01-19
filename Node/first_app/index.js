@@ -28,6 +28,12 @@ app.get('/dogs', (req, res) => {
     res.send('WOOF!');
 })
 
+app.get('/search', (req, res) => {
+    let q = req.query.q;
+    console.log(q);
+    res.send(`<h1 style="background-color: green">Search results for: ${q}</h1>`) ;
+})
+
 app.listen(3000, () => {
     console.log('listening on port 3000');
 })

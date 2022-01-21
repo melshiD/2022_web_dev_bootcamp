@@ -1,0 +1,17 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Show API</title>
+</head>
+<body>
+    <div class="id" style="font-family: monospace; margin-bottom: 1em">ID: <%=reqComment.id%></div>
+    <div class="username">UserName: <%=reqComment.username%></div>
+    <hr>
+    <h1 class="comment">Comment: <i><%=reqComment.comment%></i></h1>
+    <a href="/comments">Back to comments</a>
+    <a href="/comments/<%=reqComment.id%>/edit">EDIT</a>
+</body>
+</html>

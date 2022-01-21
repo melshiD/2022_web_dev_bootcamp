@@ -1,3 +1,4 @@
+//CRUD implementation example for RESTful routes
 const express = require('express');
 const app = express();
 const methodOverride = require('method-override');
@@ -63,6 +64,12 @@ app.get('/comments/:id/edit', (req, res) => {
     let reqComment = comments.find( c => c.id === id);
     console.log(reqComment);
     res.render('comments/edit', {reqComment});
+});
+
+app.delete('/comments/:id', (req, res) => {
+    let {id} = req.params;
+    comments = comments.filter(comment => comment.id !== id);
+    res.redirect('/comments');
 });
 
 app.patch('/comments/:id', (req, res) => {

@@ -15,6 +15,10 @@ class Color {
         const { r, g, b } = this;
         return `rgb(${r}, ${g}, ${b})`;
     }
+    destructureHsl(){
+        const {h, s, l} = this;
+        return `hsl(${h}, ${s}%, ${l}%)`;
+    }
     hsl() {
     // Make r, g, and b fractions of 1
         let {r, g, b} = this;
@@ -56,8 +60,15 @@ class Color {
         s = +(s * 100).toFixed(1);
         l = +(l * 100).toFixed(1);
 
-        return "hsl(" + h + "," + s + "%," + l + "%)";
-
+        this.h = h;
+        this.s = s;
+        this.l = l;
+        // return "hsl(" + h + "," + s + "%," + l + "%)";
+    }
+    opposite(){
+        const {h, s, l} = this;
+        const newHue = (h + 180) % 360;
+        return `hsl(${newHue}, ${s}%, ${l}%)`;
     }
 
 }

@@ -18,12 +18,23 @@ personSchema.virtual('fullName').get( function(){
     return `${this.first} ${this.last}`;
 });
 
+personSchema.pre('save', async function() {
+    console.log("about to save~");
+    this.first = "Awesome";
+
+});
+personSchema.post('save', async function(){
+    console.log('JUST SAVED');
+})
+
 const Person = mongoose.model('Person', personSchema);
 
 const dave = new Person({
     first: 'Dave',
     last: 'Melsheimer'
 });
+console.log(dave.fullName);
+
 
 dave.save();
 

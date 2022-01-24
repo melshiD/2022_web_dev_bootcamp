@@ -1,0 +1,19 @@
+<%- include('../partials/head', {title: 'Add New Item'})%> 
+</head>
+<body>
+    <h1>Add a Product</h1>
+    <form action="/products/" method="post">
+        <label for="name">Product:</label>
+        <input type="text" name='name' placeholder="product name" id="name">
+        <label for="price">Price</label>
+        <input type="number" name="price" id="price">
+        <label for="category">Category</label>
+        <select name="category" id="cagetory">
+            <option value="fruit">Fruit</option>
+            <option value="veg">Veg</option>
+            <option value="dairy">Dairy</option>
+        </select>
+        <button>Add Product</button>
+    </form>
+</body>
+</html>

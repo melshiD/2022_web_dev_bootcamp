@@ -1,0 +1,33 @@
+<%- include('../partials/head', {title: `update: ${name}`})%>
+</head>
+<body>
+    <h1>Feel free to update the <i>
+            <%= name %>
+        </i> entry</h1>
+    <form action="/products/" method="post">
+        <label for="name">Product:</label>
+        <input type="text" name='name' placeholder="<%=name%>" id="name">
+        <label for="price">Price</label>
+        <input type="number" name="price" id="price" value="<%=price%>">
+        <label for="category">Category</label>
+        <select name="category" id="category">
+            <option value="fruit">Fruit</option>
+            <option value="veg">Veg</option>
+            <option value="dairy">Dairy</option>
+        </select>
+        <button>Submit Change</button>
+    </form>
+    <script>
+        function setSelection(category) {
+            let selection = document.getElementById('category').children;
+            for (let option of selection) {
+                if(option.value == category){
+                    option.setAttribute('selected', 'selected');
+                    console.log('just set your stuff for you');
+                }
+            }
+        }
+        onload.setSelection();
+    </script>
+</body>
+</html>

@@ -12,8 +12,10 @@ app.set('views', path.join(__dirname, 'views'));
 app.set('view engine', 'ejs');
 app.use(express.urlencoded({ extended: true }));
 
+const categories = ['fruit', 'veg', 'dairy', 'mushrooms'];
+
 app.get('/products/new', (req, res) => {
-    res.render('products/new');
+    res.render('products/new', {categories});
 });
 
 app.get('/products/:id/update', async (req, res) => {
@@ -23,7 +25,7 @@ app.get('/products/:id/update', async (req, res) => {
     let name = product.name; 
     let price = product.price;
     console.log('Im a route, yall!');
-    res.render('products/update', {id, name, category, price});
+    res.render('products/update', {id, name, category, price, categories});
 });
 
 app.get('/products/:id', async (req, res) => {
@@ -54,7 +56,11 @@ app.put('/products/:id', async (req, res) => {
     res.redirect(`/products/${product.id}`);
 });
 
-
+app.delete('/products/:id', async (req, res) => {
+    const {id} = req.params;
+    const deletedProduct = await Product.findByIdAndDelete(id);
+    res.redirect('/products');
+})
 
 
 

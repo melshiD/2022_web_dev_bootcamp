@@ -11,27 +11,14 @@
         <input type="number" name="price" id="price" value="<%=price%>">
         <label for="category">Category</label>
         <select name="category" id="category">
-            <option value="fruit">Fruit</option>
-            <option value="veg">Veg</option>
-            <option value="dairy">Dairy</option>
+            <% for(let itemOnList of categories){  %> 
+                <option value="<%= itemOnList %>"  <%= category === itemOnList?'selected':''  %>><%= itemOnList %></option>
+            <% } %> 
         </select>
         <button>Submit Change</button>
     </form>
     <a href="/products/<%= id %> ">Go Back</a>
-    <script>
-        //colt says we're saving this for the end of the video
-        // function setSelection(category) {
-        //     let selection = document.getElementById('category').children;
-        //     for (let option of selection) {
-        //         if(option.value == category){
-        //             option.setAttribute('selected', 'selected');
-        //             console.log('just set your stuff for you');
-        //         }
-        //     }
-        // }
-        // onload.setSelection();
-    </script>
+    <br>
+    <a href="/products">Main</a>
 </body>
 </html>
-
-WHEN YOU SIT BACK DOWN, YOU AND COLT ARE GOING TO ADDRESS THE SELECT ELEMENT

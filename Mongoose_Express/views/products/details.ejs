@@ -7,6 +7,9 @@
     <a href="/products">Back to Main Page</a>
     <br>
     <a href="/products/<%= foundProduct._id  %>/update">Edit Product Entry</a>
+    <form action="/products/<%= foundProduct._id  %>?_method=DELETE" method="post">
+        <button>Delete Item</button>
+    </form>
 
 </body>
 </html>

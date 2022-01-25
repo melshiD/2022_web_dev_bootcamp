@@ -4,9 +4,9 @@
     <h1>Feel free to update the <i>
             <%= name %>
         </i> entry</h1>
-    <form action="/products/" method="post">
+    <form action="/products/<%=id%>?_method=PUT" method="post">
         <label for="name">Product:</label>
-        <input type="text" name='name' placeholder="<%=name%>" id="name">
+        <input type="text" name='name' value="<%=name%>" id="name">
         <label for="price">Price</label>
         <input type="number" name="price" id="price" value="<%=price%>">
         <label for="category">Category</label>
@@ -17,17 +17,21 @@
         </select>
         <button>Submit Change</button>
     </form>
+    <a href="/products/<%= id %> ">Go Back</a>
     <script>
-        function setSelection(category) {
-            let selection = document.getElementById('category').children;
-            for (let option of selection) {
-                if(option.value == category){
-                    option.setAttribute('selected', 'selected');
-                    console.log('just set your stuff for you');
-                }
-            }
-        }
-        onload.setSelection();
+        //colt says we're saving this for the end of the video
+        // function setSelection(category) {
+        //     let selection = document.getElementById('category').children;
+        //     for (let option of selection) {
+        //         if(option.value == category){
+        //             option.setAttribute('selected', 'selected');
+        //             console.log('just set your stuff for you');
+        //         }
+        //     }
+        // }
+        // onload.setSelection();
     </script>
 </body>
 </html>
+
+WHEN YOU SIT BACK DOWN, YOU AND COLT ARE GOING TO ADDRESS THE SELECT ELEMENT

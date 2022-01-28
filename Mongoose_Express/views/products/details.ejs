@@ -3,13 +3,12 @@
 <body>
     <h1><%= foundProduct.name %>:</h1>
     <h2>Price: $<%= foundProduct.price %></h2>
-    <h2>Category: <%= foundProduct.category %></h2>
+    <h2>Category: <a href="/products?category=<%= foundProduct.category  %>"><%=foundProduct.category%></a></h2>
     <a href="/products">Back to Main Page</a>
     <br>
     <a href="/products/<%= foundProduct._id  %>/update">Edit Product Entry</a>
     <form action="/products/<%= foundProduct._id  %>?_method=DELETE" method="post">
         <button>Delete Item</button>
     </form>
-
 </body>
 </html>

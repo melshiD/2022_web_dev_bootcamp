@@ -3,6 +3,8 @@ const path = require('path');
 const morgan = require('morgan');
 const req = require('express/lib/request');
 const { download } = require('express/lib/response');
+const AppError = require('./AppError');
+const res = require('express/lib/response');
 
 app.set('view engine', 'ejs');
 app.set('views', path.join(__dirname, 'views'));
@@ -23,8 +25,7 @@ const verifyPassword = (req, res, next) => {
     if(password === 'chicken'){
         next();
     }
-    // res.send('please return, and with a password');
-    throw new Error('password required');
+    throw new AppError(401, 'password required');
 };
 
 app.get('/error', (req, res) => {
@@ -43,21 +44,21 @@ app.get('/dogs', (req, res) => {
     res.send(`your beloved pup will arrive on ${req.arrivalDate}`);
 });
 
+app.get('/admin', (req, res) => {
+    throw new AppError(403, "you are not an admin");
+});
+
 app.use((req, res) => res.send('NOT FOUND'));
 
 app.use((err, req, res, next) => {
-    console.log('##############ERROR#################');
-    console.log('##############ERROR#################');
-    console.log('##############ERROR#################');
-    next(err);
-    // res.status(500).send('yougot anerror');
+    const {status = 500, message = "something went wrong"} = err;
+    res.status(status).send(message);
+});
+app.use((err, req, res, next) => {
+    const {status = 500} = err;
+    res.status(status).send('First Error Handler');
 });
 
 app.listen(3000, () => {
     console.log('listening on 3000');
 });
-
-
-
-
-WHEN YOU SIT BACK DOWN, WE ARE GOING TO CONTINUE WITH ERROR HANDLING IN EXPRESS

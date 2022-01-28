@@ -1,7 +1,7 @@
 const mongoose = require('mongoose');
 const Product = require('./models/products.js');
 
-mongoose.connect('mongodb://localhost:27017/farmStand')
+mongoose.connect('mongodb://localhost:27017/farmStand2')
     .then( () => {
         console.log("CONTENT UPLOAD SOCKET OPEN");
     })

@@ -16,7 +16,6 @@ mongoose.connect('mongodb://localhost:27017/farmStand2')
         console.log('Caught it, a Mongo connection ewwoww!');
     });
 
-
 app.use(methodOverride('_method'));
 app.set('views', path.join(__dirname, 'views'));
 app.set('view engine', 'ejs');
@@ -28,82 +27,74 @@ app.get('/products/new', (req, res) => {
     res.render('products/new', { categories });
 });
 
-app.get('/products/:id/update', async (req, res, next) => {
-    try {
-        let { id } = req.params;
-        const product = await Product.findById(mongoose.Types.ObjectId(id));
-        if (!product) {
-            return next(new AppError(404, 'Product not found'));
-        }
-        let category = product.category;
-        let name = product.name;
-        let price = product.price;
-        res.render('products/update', { id, name, category, price, categories });
-    } catch (e) {
-        next(e);
+function wrapAsync(funcToWrap) {
+    return function (req, res, next) {
+        funcToWrap(req, res, next).catch(e => next(e));
     }
-});
+}
 
-app.get('/products/:id', async (req, res, next) => {
+app.get('/products/:id/update', wrapAsync(async (req, res, next) => {
+    let { id } = req.params;
+    const product = await Product.findById(mongoose.Types.ObjectId(id));
+    // if (!product) {
+    //     next(new AppError(404, 'Product not found'));
+    // }
+    let category = product.category;
+    let name = product.name;
+    let price = product.price;
+    res.render('products/update', { id, name, category, price, categories });
+}));
+
+app.get('/products/:id', wrapAsync(async (req, res, next) => {
     const { id } = req.params;
-    try {
-        const foundProduct = await Product.findById(id);
-        if (!foundProduct) {
-            throw new AppError(404, 'Product not found');
-        }
-        res.render('products/details', { foundProduct });
-    }catch(e){
-        const error = e.toString();
-        res.render('database_error', {id, error});
-        next(e);
+    const foundProduct = await Product.findById(id);
+    if (!foundProduct) {
+        throw new AppError(404, 'Product not found');
     }
-});
+    res.render('products/details', { foundProduct });
+}));
 
-app.get('/products', async (req, res, next) => {
-    try {
-        const { category } = req.query;
-        if (category) {
-            const products = await Product.find({ category });
-            res.render('products/index', { products, category });
-        }
-        else {
-            const products = await Product.find({});
-            res.render('products/index', { products, category: 'Products' });
-        }
-    } catch (e) {
-        next(e);
+app.get('/products', wrapAsync(async (req, res, next) => {
+    const { category } = req.query;
+    if (category) {
+        const products = await Product.find({ category });
+        res.render('products/index', { products, category });
     }
-});
+    else {
+        const products = await Product.find({});
+        res.render('products/index', { products, category: 'Products' });
+    }
+}));
 
-app.post('/products', async (req, res, next) => {
-    try {
-        console.log(req.body);
-        const newProd = new Product(req.body);
-        await newProd.save();
-        res.redirect('/products');
-    } catch (e) {
-        next(e);
-    }
-});
+app.post('/products', wrapAsync(async (req, res, next) => {
+    console.log(req.body);
+    const newProd = new Product(req.body);
+    await newProd.save();
+    res.redirect('/products');
+}));
 
-app.put('/products/:id', async (req, res, next) => {
-    try {
-        let { id } = req.params;
-        const product = await Product.findByIdAndUpdate(id, req.body, { runValidators: true });
-        res.redirect(`/products/${product.id}`);
-    } catch (e) {
-        next(e);
-    }
-});
+app.put('/products/:id', wrapAsync(async (req, res, next) => {
+    let { id } = req.params;
+    const product = await Product.findByIdAndUpdate(id, req.body, { runValidators: true });
+    res.redirect(`/products/${product.id}`);
+}));
 
-app.delete('/products/:id', async (req, res) => {
-    try {
-        const { id } = req.params;
-        const deletedProduct = await Product.findByIdAndDelete(id);
-        res.redirect('/products');
-    } catch (id) {
-        res.render('database_error');
-    }
+app.delete('/products/:id', wrapAsync(async (req, res) => {
+    const { id } = req.params;
+    const deletedProduct = await Product.findByIdAndDelete(id);
+    res.redirect('/products');
+}));
+
+function handleValidationError(err){
+    console.dir(err);
+    return new AppError(400, `Validation Failed... ${err.message}`);
+}
+
+app.use((err, req, res, next) => {
+    console.log(err.name);
+    if(err.name === 'ValidationError') err = handleValidationError(err);
+    if(err.name === 'CastError') err = handleCastError(err);
+    next(err);
 });
 
 app.use((err, req, res, next) => {
@@ -115,12 +106,3 @@ app.use((err, req, res, next) => {
 app.listen(3000, () => {
     console.log("app is listening on 3000");
 });
-
-
-
-
-
-
-
-
-

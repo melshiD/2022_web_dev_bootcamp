@@ -1,0 +1,24 @@
+<%- include('../partials/head', {title: `update: ${name}`})%>
+</head>
+<body>
+    <h1>Feel free to update the <i>
+            <%= name %>
+        </i> entry</h1>
+    <form action="/products/<%=id%>?_method=PUT" method="post">
+        <label for="name">Product:</label>
+        <input type="text" name='name' value="<%=name%>" id="name">
+        <label for="price">Price</label>
+        <input type="number" name="price" id="price" value="<%=price%>">
+        <label for="category">Category</label>
+        <select name="category" id="category">
+            <% for(let itemOnList of categories){  %> 
+                <option value="<%= itemOnList %>"  <%= category === itemOnList?'selected':''  %>><%= itemOnList %></option>
+            <% } %> 
+        </select>
+        <button>Submit Change</button>
+    </form>
+    <a href="/products/<%= id %> ">Go Back</a>
+    <br>
+    <a href="/products">Main</a>
+</body>
+</html>

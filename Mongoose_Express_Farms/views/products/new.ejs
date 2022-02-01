@@ -1,0 +1,19 @@
+<%- include('../partials/head', {title: 'Add New Item'})%> 
+</head>
+<body>
+    <h1>Add a Product</h1>
+    <form action="/products/" method="post">
+        <label for="name">Product:</label>
+        <input type="text" name='name' placeholder="product name" id="name">
+        <label for="price">Price</label>
+        <input type="number" name="price" id="price">
+        <label for="category">Category</label>
+        <select name="category" id="cagetory">
+            <% for(let category of categories){  %> 
+                <option value="<%= category %>"><%= category %></option>
+            <% } %> 
+        </select>
+        <button>Add Product</button>
+    </form>
+</body>
+</html>

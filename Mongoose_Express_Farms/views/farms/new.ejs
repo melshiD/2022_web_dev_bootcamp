@@ -1,0 +1,25 @@
+<%- include('../partials/head', {title: 'Add Farm' })%>
+    </head>
+
+    <body>
+        <h1>Add a Farm</h1>
+        <form action="/farms/" method="post">
+            <div>
+                <label for="name">Farm Name:</label>
+                <input type="text" name='name' placeholder="farm name" id="name">
+            </div>
+            <div>
+                <label for="city">City:</label>
+                <input type="text" name='city' placeholder="farm city" id="city">
+            </div>
+            <div>
+                <label for="email">email:</label>
+                <input type="text" name='email' placeholder="farm email" id="email">
+            </div>
+
+            </select>
+            <button>Submit</button>
+        </form>
+    </body>
+
+    </html>

@@ -8,7 +8,7 @@ const { render, redirect } = require('express/lib/response');
 const Product = require('./models/products.js');
 const AppError = require('./AppError');
 
-mongoose.connect('mongodb://localhost:27017/farmStand3')
+mongoose.connect('mongodb://localhost:27017/farmStand2')
     .then(() => {
         console.log('CONNECTION MADE TO MONGO');
     })
@@ -20,18 +20,7 @@ app.use(methodOverride('_method'));
 app.set('views', path.join(__dirname, 'views'));
 app.set('view engine', 'ejs');
 app.use(express.urlencoded({ extended: true }));
-///Farm Routes
 
-app.get('/farms/new', (req, res) => {
-    res.render('farms/new')
-});
-
-WHEN YOU SIT BACK DOWN FIGURE OUT WHY WE 'CANNON GET /FARMS/NEW'
-
-
-
-
-///Product Routes
 const categories = ['fruit', 'veg', 'dairy', 'mushrooms'];
 
 app.get('/products/new', (req, res) => {

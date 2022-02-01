@@ -7,13 +7,15 @@ const { render, redirect, get } = require('express/lib/response');
 //why did vs code add the above line?
 const Product = require('./models/products.js');
 const AppError = require('./AppError');
+const Farm = require('./models/farm.js');
+const { features } = require('process');
 
 mongoose.connect('mongodb://localhost:27017/farmStand2')
     .then(() => {
         console.log('CONNECTION MADE TO MONGO');
     })
     .catch((err) => {
-        console.log('Caught it, a Mongo connection ewwoww!');
+        console.log('Caught it, a Mongo connection ewwoww!  Something went wrong');
     });
 
 app.use(methodOverride('_method'));
@@ -22,14 +24,33 @@ app.set('view engine', 'ejs');
 app.use(express.urlencoded({ extended: true }));
 
 const categories = ['fruit', 'veg', 'dairy', 'mushrooms'];
-///Farm routers
+///Farm routers////////////////////////Farm Routes/////////////////FARM
+
+app.get('/farms', async (req, res) => {
+    const farms = await Farm.find({});
+    res.render('farms/index', {farms});
+});
 
 app.get('/farms/new', (req, res) => {
+    console.log('in the farms/new route');
     res.render('farms/new');
 });
 
-///Product routers
+app.get('/farms/:id', async (req, res) => {
+    const {id} = req.params;
+    const farm = await Farm.findById(id);
+    res.render('farms/show', {farm});
+});
+
+app.post('/farms', async (req, res) => {
+    const farm = new Farm(req.body.farm);
+    const result = await farm.save();
+    res.redirect('/farms');
+});
+
+///Product routers//////////////////Farm Product/////////////////PROD
 app.get('/products/new', (req, res) => {
+    console.log('LOOKING for the cannot get error');
     res.render('products/new', { categories });
 });
 
@@ -92,11 +113,18 @@ app.delete('/products/:id', wrapAsync(async (req, res) => {
 }));
 
 function handleValidationError(err){
+    console.log('LOOKING for the cannot get error');
     console.dir(err);
     return new AppError(400, `Validation Failed... ${err.message}`);
 }
 
+app.use((req, res, next) => {
+    console.log('inside the non-error-throwing last-change middleware');
+    next(new AppError(404, 'Your route was not found.  Please have your dev team build it'));
+});
+
 app.use((err, req, res, next) => {
+    console.log('inside of THE SECOND TO LAST');
     console.log(err.name);
     if(err.name === 'ValidationError') err = handleValidationError(err);
     if(err.name === 'CastError') err = handleCastError(err);
@@ -104,6 +132,8 @@ app.use((err, req, res, next) => {
 });
 
 app.use((err, req, res, next) => {
+    console.log('inside of THE LAST');
+
     const { status = 500, message = "something went wrong" } = err;
     res.status(status).send(message);
     res.redirect('/products');

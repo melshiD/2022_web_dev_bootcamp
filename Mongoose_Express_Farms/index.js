@@ -3,7 +3,7 @@ const app = express();
 const path = require('path');
 const mongoose = require('mongoose');
 const methodOverride = require('method-override')
-const { render, redirect } = require('express/lib/response');
+const { render, redirect, get } = require('express/lib/response');
 //why did vs code add the above line?
 const Product = require('./models/products.js');
 const AppError = require('./AppError');
@@ -22,7 +22,13 @@ app.set('view engine', 'ejs');
 app.use(express.urlencoded({ extended: true }));
 
 const categories = ['fruit', 'veg', 'dairy', 'mushrooms'];
+///Farm routers
 
+app.get('/farms/new', (req, res) => {
+    res.render('farms/new');
+});
+
+///Product routers
 app.get('/products/new', (req, res) => {
     res.render('products/new', { categories });
 });
@@ -101,7 +107,7 @@ app.use((err, req, res, next) => {
     const { status = 500, message = "something went wrong" } = err;
     res.status(status).send(message);
     res.redirect('/products');
-})
+});
 
 app.listen(3000, () => {
     console.log("app is listening on 3000");

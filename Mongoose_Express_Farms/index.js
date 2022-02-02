@@ -28,7 +28,7 @@ const categories = ['fruit', 'veg', 'dairy', 'mushrooms'];
 
 app.get('/farms', async (req, res) => {
     const farms = await Farm.find({});
-    res.render('farms/index', {farms});
+    res.render('farms/index', { farms });
 });
 
 app.get('/farms/new', (req, res) => {
@@ -36,10 +36,26 @@ app.get('/farms/new', (req, res) => {
     res.render('farms/new');
 });
 
+app.get('/farms/:id/products/new', (req, res) => {
+    const { id } = req.params;
+    res.render('products/new', { categories, id });
+});
+
 app.get('/farms/:id', async (req, res) => {
-    const {id} = req.params;
+    const { id } = req.params;
     const farm = await Farm.findById(id);
-    res.render('farms/show', {farm});
+    res.render('farms/show', { farm });
+});
+
+app.post('/farms/:id/products', async (req, res) => {
+    const { id } = req.params;
+    const farm = await Farm.findById(id);
+    const { name, price, category } = req.body;
+    const newProd = new Product({ name, price, category });
+    await newProd.save();
+    farm.products.push(product);
+    newProd.farm = farm;
+    res.redirect('/farms');
 });
 
 app.post('/farms', async (req, res) => {
@@ -112,7 +128,7 @@ app.delete('/products/:id', wrapAsync(async (req, res) => {
     res.redirect('/products');
 }));
 
-function handleValidationError(err){
+function handleValidationError(err) {
     console.log('LOOKING for the cannot get error');
     console.dir(err);
     return new AppError(400, `Validation Failed... ${err.message}`);
@@ -126,8 +142,8 @@ app.use((req, res, next) => {
 app.use((err, req, res, next) => {
     console.log('inside of THE SECOND TO LAST');
     console.log(err.name);
-    if(err.name === 'ValidationError') err = handleValidationError(err);
-    if(err.name === 'CastError') err = handleCastError(err);
+    if (err.name === 'ValidationError') err = handleValidationError(err);
+    if (err.name === 'CastError') err = handleCastError(err);
     next(err);
 });
 

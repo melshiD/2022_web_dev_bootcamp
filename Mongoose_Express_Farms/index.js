@@ -47,21 +47,23 @@ app.get('/farms/:id', async (req, res) => {
     res.render('farms/show', { farm });
 });
 
-app.post('/farms/:id/products', async (req, res) => {
-    const { id } = req.params;
-    const farm = await Farm.findById(id);
-    const { name, price, category } = req.body;
-    const newProd = new Product({ name, price, category });
-    await newProd.save();
-    farm.products.push(product);
-    newProd.farm = farm;
-    res.redirect('/farms');
-});
-
 app.post('/farms', async (req, res) => {
     const farm = new Farm(req.body.farm);
     const result = await farm.save();
     res.redirect('/farms');
+});
+
+
+app.post('/farms/:id/products', async (req, res) => {
+    // const { id } = req.params;
+    // const farm = await Farm.findById(id);
+    const { name, price, category } = req.body;
+    const newProd = new Product({ name, price, category });
+    // await newProd.save();
+    // farm.products.push(product);
+    // newProd.farm = farm;
+    // res.redirect('/farms/index');
+    res.send(req.body);
 });
 
 ///Product routers//////////////////Farm Product/////////////////PROD

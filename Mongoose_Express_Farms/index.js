@@ -36,16 +36,22 @@ app.get('/farms/new', (req, res) => {
     res.render('farms/new');
 });
 
-app.get('/farms/:id/products/new', (req, res) => {
+app.get('/farms/:id/products/new', async (req, res) => {
     const { id } = req.params;
-    res.render('products/new', { categories, id });
+    const farm = await Farm.findById(id);
+    res.render('products/new', { categories, farm });
 });
 
 app.get('/farms/:id', async (req, res) => {
     const { id } = req.params;
-    const farm = await Farm.findById(id);
+    const farm = await Farm.findById(id).populate('products');
     res.render('farms/show', { farm });
 });
+
+app.delete('/farms/:id', wrapAsync( async(req, res) => {
+    const farm = await Farm.findByIdAndDelete(req.params.id);
+    res.redirect('/farms');
+}));
 
 app.post('/farms', async (req, res) => {
     const farm = new Farm(req.body.farm);
@@ -92,7 +98,8 @@ app.get('/products/:id/update', wrapAsync(async (req, res, next) => {
 
 app.get('/products/:id', wrapAsync(async (req, res, next) => {
     const { id } = req.params;
-    const foundProduct = await Product.findById(id);
+    const foundProduct = await Product.findById(id).populate('farm', 'name');
+    console.log(foundProduct);
     if (!foundProduct) {
         throw new AppError(404, 'Product not found');
     }

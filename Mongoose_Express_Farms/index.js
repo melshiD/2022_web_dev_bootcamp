@@ -55,15 +55,15 @@ app.post('/farms', async (req, res) => {
 
 
 app.post('/farms/:id/products', async (req, res) => {
-    // const { id } = req.params;
-    // const farm = await Farm.findById(id);
+    const { id } = req.params;
+    const farm = await Farm.findById(id);
     const { name, price, category } = req.body;
     const newProd = new Product({ name, price, category });
-    // await newProd.save();
-    // farm.products.push(product);
-    // newProd.farm = farm;
-    // res.redirect('/farms/index');
-    res.send(req.body);
+    farm.products.push(newProd);
+    newProd.farm = farm;
+    await farm.save();
+    await newProd.save();
+    res.redirect(`/farms/${farm._id}`);
 });
 
 ///Product routers//////////////////Farm Product/////////////////PROD
